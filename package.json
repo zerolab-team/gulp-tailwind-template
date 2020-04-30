@@ -11,7 +11,9 @@
     "lint:check:scripts": "eslint --print-config src/index.js | eslint-config-prettier-check",
     "lint:fix:scripts": "eslint --ignore-path .gitignore --fix .",
     "lint:check": "run-p lint:check:*",
-    "lint:fix": "run-p lint:fix:*"
+    "lint:fix": "run-p lint:fix:*",
+    "start": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=production gulp"
   },
   "dependencies": {
     "@babel/core": "^7.9.6",
