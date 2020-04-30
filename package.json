@@ -1,0 +1,7 @@
+{
+  "name": "gulp-tailwind-template",
+  "version": "1.0.0",
+  "repository": "git@github.com:zerolab-team/gulp-tailwind-template.git",
+  "author": "Sergey <newbornfrontender@gmail.com>",
+  "license": "MIT"
+}
