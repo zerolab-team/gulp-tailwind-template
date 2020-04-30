@@ -21,6 +21,7 @@
     "@babel/register": "^7.9.0",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
+    "gulp-sourcemaps": "^2.6.5",
     "rollup": "^2.7.5"
   },
   "devDependencies": {
