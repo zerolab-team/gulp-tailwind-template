@@ -65,16 +65,13 @@
   },
   "lint-staged": {
     "*.{html,js*,md} !src/**/*.js": [
-      "prettier --write --ignore-path .gitignore",
-      "git add"
+      "prettier --write --ignore-path .gitignore"
     ],
     "*.css": [
-      "stylelint --fix --ignore-path .gitignore",
-      "git add"
+      "stylelint --fix --ignore-path .gitignore"
     ],
     "*.js": [
-      "eslint --fix --ignore-path .gitignore",
-      "git add"
+      "eslint --fix --ignore-path .gitignore"
     ]
   }
 }
