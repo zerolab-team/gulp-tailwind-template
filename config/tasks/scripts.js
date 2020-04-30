@@ -1,5 +1,4 @@
 import { rollup } from 'rollup';
-
 import { getEnv } from '../helpers';
 
 export default async ({ input, dir, plugins = [] }) => {

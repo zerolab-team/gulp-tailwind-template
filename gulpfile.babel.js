@@ -1,5 +1,4 @@
 import { parallel, series } from 'gulp';
-
 import { paths } from './config/paths';
 
 // Gulp tasks
@@ -7,7 +6,7 @@ import styles from './config/tasks/styles';
 import scripts from './config/tasks/scripts';
 
 // Rollup plugins
-// import styles from './config/plugins/styles';
+// ...
 
 export default series(
   parallel((cb) => {
@@ -15,9 +14,7 @@ export default series(
     scripts({
       input: paths.scripts.from,
       dir: paths.scripts.to,
-      plugins: [
-        // styles({}),
-      ],
+      plugins: [],
     });
 
     cb();
