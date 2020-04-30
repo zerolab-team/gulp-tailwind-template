@@ -92,10 +92,10 @@
     "*.{html,js*,md} !src/**/*.js": [
       "prettier --write --ignore-path .gitignore"
     ],
-    "*.css": [
+    "src/**/*.css": [
       "stylelint --fix --ignore-path .gitignore"
     ],
-    "*.js": [
+    "src/**/*.js": [
       "eslint --fix --ignore-path .gitignore"
     ]
   },
