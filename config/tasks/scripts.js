@@ -1,16 +1,20 @@
 import { rollup } from 'rollup';
 
+import { getEnv } from '../helpers';
+
 export default async ({ input, dir, plugins = [] }) => {
+  const { isDev, isProd } = getEnv();
+
   const bundle = await rollup({
     input,
-    treeshake: true,
+    treeshake: isProd,
     plugins,
   });
 
   return bundle.write({
     dir,
     format: 'esm',
-    sourcemap: true,
+    sourcemap: isDev,
     preferConst: true,
   });
 };
