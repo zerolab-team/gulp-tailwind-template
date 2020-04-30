@@ -5,9 +5,11 @@
   "author": "Sergey <newbornfrontender@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write --ignore-path .gitignore **/*.{html,md*}"
+    "format": "prettier --write --ignore-path .gitignore **/*.{html,js*,md} !src/**/*.js"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "prettier": "^2.0.5"
   },
   "prettier": {
@@ -16,5 +18,10 @@
     "trailingComma": "all",
     "arrowParens": "always",
     "endOfLine": "lf"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
