@@ -1,0 +1,80 @@
+{
+  "name": "gulp-tailwind-template",
+  "version": "1.0.0",
+  "repository": "git@github.com:zerolab-team/gulp-tailwind-template.git",
+  "author": "Sergey <newbornfrontender@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write --ignore-path .gitignore **/*.{html,js*,md} !src/**/*.js",
+    "lint:check:styles": "stylelint-config-prettier-check",
+    "lint:fix:styles": "stylelint --ignore-path .gitignore --fix **/*.css",
+    "lint:check:scripts": "eslint --print-config src/index.js | eslint-config-prettier-check",
+    "lint:fix:scripts": "eslint --ignore-path .gitignore --fix .",
+    "lint:check": "run-p lint:check:*",
+    "lint:fix": "run-p lint:fix:*"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "prettier-eslint": "^9.0.1",
+    "stylelint": "^13.3.3",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-prettier": "^1.1.2"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "endOfLine": "lf"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-recommended",
+      "stylelint-prettier/recommended"
+    ]
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "env": {
+      "es2020": true,
+      "browser": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{html,js*,md} !src/**/*.js": [
+      "prettier --write --ignore-path .gitignore"
+    ],
+    "*.css": [
+      "stylelint --fix --ignore-path .gitignore"
+    ],
+    "*.js": [
+      "eslint --fix --ignore-path .gitignore"
+    ]
+  }
+}
