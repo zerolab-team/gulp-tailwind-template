@@ -13,7 +13,8 @@
     "lint:check": "run-p lint:check:*",
     "lint:fix": "run-p lint:fix:*",
     "start": "cross-env NODE_ENV=development gulp",
-    "build": "cross-env NODE_ENV=production gulp"
+    "build": "cross-env NODE_ENV=production gulp",
+    "serve": "serve dist"
   },
   "dependencies": {
     "@babel/core": "^7.9.6",
@@ -52,6 +53,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "prettier-eslint": "^9.0.1",
+    "serve": "^11.3.0",
     "stylelint": "^13.3.3",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-recommended": "^3.0.0",
