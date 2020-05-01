@@ -1,5 +1,6 @@
 import { src, dest } from 'gulp';
+import { paths } from '../paths';
 
-export default ({ from, to }) => {
-  return src(from).pipe(dest(to));
+export const markup = () => {
+  return src(paths.markup.from).pipe(dest(paths.markup.to));
 };
