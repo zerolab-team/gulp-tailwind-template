@@ -24,6 +24,7 @@
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
     "cross-env": "^7.0.2",
+    "del": "^5.1.0",
     "gulp": "^4.0.2",
     "gulp-if": "^3.0.0",
     "gulp-postcss": "^8.0.0",
