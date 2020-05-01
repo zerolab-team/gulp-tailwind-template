@@ -11,7 +11,9 @@
     "lint:check:scripts": "eslint --print-config src/index.js | eslint-config-prettier-check",
     "lint:fix:scripts": "eslint --ignore-path .gitignore --fix .",
     "lint:check": "run-p lint:check:*",
-    "lint:fix": "run-p lint:fix:*"
+    "lint:fix": "run-p lint:fix:*",
+    "start": "cross-env NODE_ENV=development gulp",
+    "build": "cross-env NODE_ENV=production gulp"
   },
   "dependencies": {
     "@babel/core": "^7.9.6",
@@ -19,9 +21,21 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-modules": "^0.1.3",
     "@babel/register": "^7.9.0",
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "cross-env": "^7.0.2",
     "gulp": "^4.0.2",
+    "gulp-if": "^3.0.0",
     "gulp-postcss": "^8.0.0",
-    "rollup": "^2.7.5"
+    "gulp-sourcemaps": "^2.6.5",
+    "postcss-import": "^12.0.1",
+    "postcss-nested": "^4.2.1",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-sort-media-queries": "^1.4.24",
+    "postcss-use": "^3.0.0",
+    "rollup": "^2.7.5",
+    "rollup-plugin-postcss": "^3.1.1",
+    "tailwindcss": "^1.4.1",
+    "webp-in-css": "^0.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -40,7 +54,6 @@
     "stylelint-prettier": "^1.1.2"
   },
   "prettier": {
-    "printWidth": 100,
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always",
@@ -84,13 +97,16 @@
     "*.{html,js*,md} !src/**/*.js": [
       "prettier --write --ignore-path .gitignore"
     ],
-    "*.css": [
+    "src/**/*.css": [
       "stylelint --fix --ignore-path .gitignore"
     ],
-    "*.js": [
+    "src/**/*.js": [
       "eslint --fix --ignore-path .gitignore"
     ]
   },
+  "browserslist": [
+    "last 2 chrome versions"
+  ],
   "babel": {
     "presets": [
       "@babel/env"

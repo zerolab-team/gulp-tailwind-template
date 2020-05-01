@@ -1,20 +1,32 @@
 import { parallel, series } from 'gulp';
+import { paths } from './config/paths';
+import { getEnv } from './config/helpers';
 
 // Gulp tasks
-import styles from './config/tasks/styles';
+// import styles from './config/tasks/styles';
 import scripts from './config/tasks/scripts';
+import markup from './config/tasks/markup';
 
 // Rollup plugins
-// import styles from './config/plugins/styles';
+import postcss from 'rollup-plugin-postcss';
+import resolve from '@rollup/plugin-node-resolve';
 
-export const start = series(
+const { isDev, isProd } = getEnv();
+
+export default series(
   parallel((cb) => {
-    styles({ from: 'src/index.css', to: 'dist' });
+    // styles({ from: paths.styles.from, to: paths.styles.to });
+    markup({ from: paths.markup.from, to: paths.markup.to });
     scripts({
-      input: 'src/index.js',
-      dir: 'dist',
+      input: paths.scripts.from,
+      dir: paths.scripts.to,
       plugins: [
-        // styles(),
+        resolve(),
+        postcss({
+          extract: true,
+          minimize: isProd,
+          sourceMap: isDev,
+        }),
       ],
     });
 
