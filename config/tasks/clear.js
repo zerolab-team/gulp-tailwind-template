@@ -1,5 +1,5 @@
 import del from 'del';
 
-export default async (files) => {
-  return await del(files);
+export const clear = async () => {
+  return await del(['dist']);
 };

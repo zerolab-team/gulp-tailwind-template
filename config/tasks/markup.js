@@ -1,5 +1,8 @@
-import { src, dest } from 'gulp';
+import { src, dest, watch } from 'gulp';
+import { paths } from '../paths';
 
-export default ({ from, to }) => {
-  return src(from).pipe(dest(to));
+export const markup = () => {
+  const markup = () => src(paths.markup.from).pipe(dest(paths.markup.to));
+
+  return watch('src/**/*.html', markup);
 };
