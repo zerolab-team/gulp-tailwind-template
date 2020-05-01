@@ -10,6 +10,9 @@ import markup from './config/tasks/markup';
 // Rollup plugins
 import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import babel from 'rollup-plugin-babel';
+import { terser } from 'rollup-plugin-terser';
 
 const { isDev, isProd } = getEnv();
 
@@ -21,12 +24,29 @@ export default series(
       input: paths.scripts.from,
       dir: paths.scripts.to,
       plugins: [
-        resolve(),
+        resolve({
+          browser: true,
+        }),
+        commonjs({
+          sourceMap: isDev,
+        }),
         postcss({
           extract: true,
           minimize: isProd,
           sourceMap: isDev,
         }),
+        babel({
+          presets: ['@babel/modules'],
+          babelrc: false,
+          externalHelpers: true,
+        }),
+        isProd &&
+          terser({
+            module: true,
+            mangle: {
+              module: true,
+            },
+          }),
       ],
     });
 
